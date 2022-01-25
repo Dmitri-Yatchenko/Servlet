@@ -16,7 +16,7 @@
 
   <filter-mapping>
     <filter-name>request</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/car</url-pattern>
   </filter-mapping>
 
 </web-app>
