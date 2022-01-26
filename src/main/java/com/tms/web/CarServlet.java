@@ -13,24 +13,16 @@ import java.util.*;
 @WebServlet(value = "/car")
 public class CarServlet extends HttpServlet {
 
-    private Map<String, Car> cars;
-
-    @Override
-    public void init() throws ServletException {
-        cars = new HashMap<>();
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String id = req.getParameter("id");
         PrintWriter writer = resp.getWriter();
 
-        if (id.equals("")){
-            writer.println(cars);
-        }else{
-            writer.println(cars.get(id));
-        }
+        CarService carService = new CarBase();
+        String cars = carService.getCar(id);
+        writer.println(cars);
+
         GregorianCalendar gcalendar = new GregorianCalendar();
         String time = gcalendar.get(Calendar.HOUR) + ":"
                 + gcalendar.get(Calendar.MINUTE) + ":"
@@ -44,15 +36,17 @@ public class CarServlet extends HttpServlet {
 
         String id = req.getParameter("id");
         String name = req.getParameter("name");
-        Car car = new Car(name);
-        cars.put(id, car);
+        CarService carService = new CarBase();
+        carService.addCar(id, name);
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String id = req.getParameter("id");
-        cars.remove(id);
+        CarService carService = new CarBase();
+        carService.delСar(id);
+
     }
 
     @Override
@@ -60,6 +54,8 @@ public class CarServlet extends HttpServlet {
 
         String id = req.getParameter("id");
         String name = req.getParameter("name");
-        cars.get(id).setName(name);
+        CarService carService = new CarBase();
+        carService.editСar(id, name);
+
     }
 }

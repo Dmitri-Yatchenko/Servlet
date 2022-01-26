@@ -12,7 +12,7 @@ public class FilterRequests implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String id = servletRequest.getParameter("id");
-        if (id.equals("")){
+        if (id.isBlank()){
             servletRequest.getRequestDispatcher("/WEB-INF/pages/error.html").forward(servletRequest, servletResponse);
         }else {
             filterChain.doFilter(servletRequest, servletResponse);
