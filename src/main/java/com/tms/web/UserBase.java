@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import  java.lang.String;
 
-
 public class UserBase implements UserService{
 
     private static Map<String, User> users = new HashMap<>();
