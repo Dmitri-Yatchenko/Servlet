@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Authorization page</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
+<div class="modal">
+<p class="header">Authorization form</p>
 <form method="post" action="/Servlet/authorization">
-    Name:       <input name="name" type="text"><br/>
-    Password:   <input name="password" type="password"><br/>
+    Name:       <input name="name" type="text" class="coloredFields"><br/>
+    Password:   <input name="password" type="password" class="coloredFields"><br/>
     <input type="submit">
 </form>
-
+</div>
 </body>
 </html>
